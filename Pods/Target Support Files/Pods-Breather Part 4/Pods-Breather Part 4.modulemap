@@ -1,0 +1,6 @@
+framework module Pods_Breather_Part_4 {
+  umbrella header "Pods-Breather Part 4-umbrella.h"
+
+  export *
+  module * { export * }
+}
