@@ -17,7 +17,8 @@ class MainViewModel: ViewModel {
 
     // MARK: - Dependencies
 
-    let provider = MoyaProvider<AirVisualAPI>()
+    let airVisualAPI = MoyaProvider<AirVisualAPI>()
+    let propellerAPI = MoyaProvider<PropellerAPI>()
     let lat = 40.676906
     let lon = -73.942275
 
@@ -143,22 +144,39 @@ class MainViewModel: ViewModel {
                         error: errorSubject.asDriver(onErrorJustReturn: BreatherError.unknown))
 
         viewDidRefreshSubject
-            .do(onNext: { [unowned self] _ in
+            .subscribe(onNext: { [unowned self] _ in
                 self.isLoadingSubject.onNext(true)
             })
+            .disposed(by: disposeBag)
+
+        let weatherAndPollution = viewDidRefreshSubject
             .flatMap { [unowned self] _ in
-                return self.provider.rx.request(.nearestCity(lat: self.lat, lon: self.lon))
+                return self.airVisualAPI.rx.request(.nearestCity(lat: self.lat, lon: self.lon))
                     .asObservable()
                     .materialize()
             }
+
+        let asthma = viewDidRefreshSubject
+            .flatMap { [unowned self] _ in
+                return self.propellerAPI.rx.request(.forecast(lat: self.lat, lon: self.lon))
+                    .asObservable()
+                    .materialize()
+            }
+
+        Observable.zip(weatherAndPollution, asthma)
             .do(onNext: { [unowned self] _ in
                 self.isLoadingSubject.onNext(false)
             })
-            .subscribe(onNext: { [unowned self] event in
-                switch event {
-                case let .next(element): print("next:", element)
-                case let .error(error): self.errorSubject.onNext(error)
-                case .completed: break
+            .subscribe(onNext: { [unowned self] (weatherAndPollutionEvent, asthmaEvent) in
+                switch (weatherAndPollutionEvent, asthmaEvent) {
+                case let (.next(weatherAndPollutionResponse), .next(asthmaResponse)):
+                    print("weatherAndPollutionResponse:", weatherAndPollutionResponse)
+                    print("asthmaResponse", asthmaResponse)
+                case let (.error(error), _):
+                    self.errorSubject.onNext(error)
+                case let (_, .error(error)):
+                    self.errorSubject.onNext(error)
+                default: break
                 }
             })
             .disposed(by: disposeBag)

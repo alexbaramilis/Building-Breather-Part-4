@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		46DDA7A478468ECCDD5ABE22 /* Pods_Breather_Part_4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7685A53B6F4755D6D8110C /* Pods_Breather_Part_4.framework */; };
+		61B3983E227D908000E8A98E /* PropellerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3983D227D908000E8A98E /* PropellerAPI.swift */; };
 		61DABCE9227C6DAB00D624DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DABCDA227C6DAA00D624DA /* LaunchScreen.storyboard */; };
 		61DABCEA227C6DAB00D624DA /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DABCDC227C6DAA00D624DA /* Errors.swift */; };
 		61DABCEB227C6DAB00D624DA /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DABCDD227C6DAA00D624DA /* Asset.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		4B7685A53B6F4755D6D8110C /* Pods_Breather_Part_4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breather_Part_4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B3983D227D908000E8A98E /* PropellerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropellerAPI.swift; sourceTree = "<group>"; };
 		61DABCC4227C6D8800D624DA /* Breather Part 4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Breather Part 4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DABCDA227C6DAA00D624DA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61DABCDC227C6DAA00D624DA /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -138,8 +140,8 @@
 		61DABD13227C6E8500D624DA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				61DABD14227C6E8500D624DA /* MainViewController.swift */,
 				61DABD15227C6E8500D624DA /* Main.storyboard */,
+				61DABD14227C6E8500D624DA /* MainViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				61DABD1F227C6E9E00D624DA /* AirVisualAPI.swift */,
+				61B3983D227D908000E8A98E /* PropellerAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				61DABCF0227C6DAB00D624DA /* UIViewController+Extension.swift in Sources */,
 				61DABCF1227C6DAB00D624DA /* String+Extension.swift in Sources */,
 				61DABCEB227C6DAB00D624DA /* Asset.swift in Sources */,
+				61B3983E227D908000E8A98E /* PropellerAPI.swift in Sources */,
 				61DABCED227C6DAB00D624DA /* Color.swift in Sources */,
 				61DABD1D227C6E9600D624DA /* CityConditions.swift in Sources */,
 				61DABCEF227C6DAB00D624DA /* UILabel+Extension.swift in Sources */,

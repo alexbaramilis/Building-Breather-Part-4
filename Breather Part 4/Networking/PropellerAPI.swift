@@ -1,34 +1,32 @@
 //
-//  AirVisualAPI.swift
+//  PropellerAPI.swift
 //  Breather
 //
-//  Created by Alexandros Baramilis on 30/04/2019.
+//  Created by Alexandros Baramilis on 04/05/2019.
 //  Copyright © 2019 Alexandros Baramilis. All rights reserved.
 //
 
 import Foundation
 import Moya
 
-enum AirVisualAPI {
-    static private let key = "A5xEAXuhEFJZyZA4o"
-
-    case nearestCity(lat: Double, lon: Double)
+enum PropellerAPI {
+    case forecast(lat: Double, lon: Double)
 }
 
-extension AirVisualAPI: TargetType {
+extension PropellerAPI: TargetType {
     var baseURL: URL {
-        return URL(string: "https://api.airvisual.com/v2")!
+        return URL(string: "https://open.propellerhealth.com/prod")!
     }
 
     var path: String {
         switch self {
-        case .nearestCity: return "/nearest_city"
+        case .forecast: return "/forecast"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .nearestCity: return .get
+        case .forecast: return .get
         }
     }
 
@@ -38,18 +36,17 @@ extension AirVisualAPI: TargetType {
 
     var task: Task {
         switch self {
-        case let .nearestCity(lat, lon):
+        case let .forecast(lat, lon):
             let parameters = [
-                "lat": String(lat),
-                "lon": String(lon),
-                "key": AirVisualAPI.key
+                "latitude": String(lat),
+                "longitude": String(lon)
             ]
             return .requestParameters(parameters: parameters,
                                       encoding: URLEncoding.default)
         }
     }
 
-    var headers: [String: String]? {
+    var headers: [String : String]? {
         return nil
     }
 }
