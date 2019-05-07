@@ -35,7 +35,7 @@ struct Pollution {
 
 struct Asthma {
     let risk: String // risk of adverse respiratory conditions: "high", "medium" or "low"
-    let probability: Int // probability of adverse respiratory conditions: ex. 64 (%)
+    let probability: Double // probability of adverse respiratory conditions: ex. 0.4938...
 }
 
 extension CityConditions {
@@ -53,7 +53,7 @@ extension CityConditions {
                                   aqiChina: 3,
                                   mainPollutantChina: "p2")
         let asthma = Asthma(risk: "medium",
-                            probability: 63)
+                            probability: 0.63)
         return CityConditions(city: "New York",
                               weather: weather,
                               pollution: pollution,

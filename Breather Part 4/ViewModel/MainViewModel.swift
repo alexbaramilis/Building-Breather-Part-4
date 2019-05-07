@@ -122,7 +122,7 @@ class MainViewModel: ViewModel {
             .map { Color.forAsthmaRisk($0.asthma.risk) }
             .asDriver(onErrorJustReturn: UIColor.black)
         let asthmaProbability = cityConditionsSubject
-            .map { "Probability: \($0.asthma.probability)%" }
+            .map { "Probability: \(Int($0.asthma.probability*100))%" }
             .asDriver(onErrorJustReturn: "Probability: ...%")
 
         output = Output(city: city,
@@ -152,6 +152,8 @@ class MainViewModel: ViewModel {
         let weatherAndPollution = viewDidRefreshSubject
             .flatMap { [unowned self] _ in
                 return self.airVisualAPI.rx.request(.nearestCity(lat: self.lat, lon: self.lon))
+                    .filterSuccessfulStatusCodes()
+                    .map(AirVisualNearestCityResponse.self)
                     .asObservable()
                     .materialize()
             }
@@ -159,6 +161,8 @@ class MainViewModel: ViewModel {
         let asthma = viewDidRefreshSubject
             .flatMap { [unowned self] _ in
                 return self.propellerAPI.rx.request(.forecast(lat: self.lat, lon: self.lon))
+                    .filterSuccessfulStatusCodes()
+                    .map(PropellerForecastResponse.self)
                     .asObservable()
                     .materialize()
             }
@@ -170,8 +174,11 @@ class MainViewModel: ViewModel {
             .subscribe(onNext: { [unowned self] (weatherAndPollutionEvent, asthmaEvent) in
                 switch (weatherAndPollutionEvent, asthmaEvent) {
                 case let (.next(weatherAndPollutionResponse), .next(asthmaResponse)):
-                    print("weatherAndPollutionResponse:", weatherAndPollutionResponse)
-                    print("asthmaResponse", asthmaResponse)
+                    let cityConditions = CityConditions(city: weatherAndPollutionResponse.getCity(),
+                                                        weather: weatherAndPollutionResponse.getWeather(),
+                                                        pollution: weatherAndPollutionResponse.getPollution(),
+                                                        asthma: asthmaResponse.getAsthma())
+                    self.cityConditionsSubject.onNext(cityConditions)
                 case let (.error(error), _):
                     self.errorSubject.onNext(error)
                 case let (_, .error(error)):
