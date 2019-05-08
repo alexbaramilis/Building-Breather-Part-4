@@ -173,11 +173,11 @@ class MainViewModel: ViewModel {
             })
             .subscribe(onNext: { [unowned self] (weatherAndPollutionEvent, asthmaEvent) in
                 switch (weatherAndPollutionEvent, asthmaEvent) {
-                case let (.next(weatherAndPollutionResponse), .next(asthmaResponse)):
-                    let cityConditions = CityConditions(city: weatherAndPollutionResponse.getCity(),
-                                                        weather: weatherAndPollutionResponse.getWeather(),
-                                                        pollution: weatherAndPollutionResponse.getPollution(),
-                                                        asthma: asthmaResponse.getAsthma())
+                case let (.next(airVisualNearestCityResponse), .next(propellerForecastResponse)):
+                    let cityConditions = CityConditions(city: airVisualNearestCityResponse.getCity(),
+                                                        weather: airVisualNearestCityResponse.getWeather(),
+                                                        pollution: airVisualNearestCityResponse.getPollution(),
+                                                        asthma: propellerForecastResponse.getAsthma())
                     self.cityConditionsSubject.onNext(cityConditions)
                 case let (.error(error), _):
                     self.errorSubject.onNext(error)
