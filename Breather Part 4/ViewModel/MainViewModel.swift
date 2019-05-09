@@ -143,18 +143,18 @@ class MainViewModel: ViewModel {
                         isLoading: isLoadingSubject.asDriver(onErrorJustReturn: false),
                         error: errorSubject.asDriver(onErrorJustReturn: BreatherError.unknown))
 
-        let weatherAndPollution = airVisualAPI.rx
+        let airVisualNearestCity = airVisualAPI.rx
             .request(.nearestCity(lat: lat, lon: lon))
             .filterSuccessfulStatusCodes()
             .map(AirVisualNearestCityResponse.self)
 
-        let asthma = propellerAPI.rx
+        let propellerForecast = propellerAPI.rx
             .request(.forecast(lat: lat, lon: lon))
             .filterSuccessfulStatusCodes()
             .map(PropellerForecastResponse.self)
 
-        let zipped = Observable.zip(weatherAndPollution.asObservable(),
-                                    asthma.asObservable())
+        let zipped = Observable.zip(airVisualNearestCity.asObservable(),
+                                    propellerForecast.asObservable())
 
         viewDidRefreshSubject
             .do(onNext: { [unowned self] _ in self.isLoadingSubject.onNext(true) })
