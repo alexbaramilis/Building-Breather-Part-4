@@ -143,45 +143,32 @@ class MainViewModel: ViewModel {
                         isLoading: isLoadingSubject.asDriver(onErrorJustReturn: false),
                         error: errorSubject.asDriver(onErrorJustReturn: BreatherError.unknown))
 
+        let weatherAndPollution = airVisualAPI.rx
+            .request(.nearestCity(lat: lat, lon: lon))
+            .filterSuccessfulStatusCodes()
+            .map(AirVisualNearestCityResponse.self)
+
+        let asthma = propellerAPI.rx
+            .request(.forecast(lat: lat, lon: lon))
+            .filterSuccessfulStatusCodes()
+            .map(PropellerForecastResponse.self)
+
+        let zipped = Observable.zip(weatherAndPollution.asObservable(),
+                                    asthma.asObservable())
+
         viewDidRefreshSubject
-            .subscribe(onNext: { [unowned self] _ in
-                self.isLoadingSubject.onNext(true)
-            })
-            .disposed(by: disposeBag)
-
-        let weatherAndPollution = viewDidRefreshSubject
-            .flatMap { [unowned self] _ in
-                return self.airVisualAPI.rx.request(.nearestCity(lat: self.lat, lon: self.lon))
-                    .filterSuccessfulStatusCodes()
-                    .map(AirVisualNearestCityResponse.self)
-                    .asObservable()
-                    .materialize()
-            }
-
-        let asthma = viewDidRefreshSubject
-            .flatMap { [unowned self] _ in
-                return self.propellerAPI.rx.request(.forecast(lat: self.lat, lon: self.lon))
-                    .filterSuccessfulStatusCodes()
-                    .map(PropellerForecastResponse.self)
-                    .asObservable()
-                    .materialize()
-            }
-
-        Observable.zip(weatherAndPollution, asthma)
-            .do(onNext: { [unowned self] _ in
-                self.isLoadingSubject.onNext(false)
-            })
-            .subscribe(onNext: { [unowned self] (weatherAndPollutionEvent, asthmaEvent) in
-                switch (weatherAndPollutionEvent, asthmaEvent) {
-                case let (.next(airVisualNearestCityResponse), .next(propellerForecastResponse)):
+            .do(onNext: { [unowned self] _ in self.isLoadingSubject.onNext(true) })
+            .flatMap { zipped.materialize() }
+            .do(onNext: { [unowned self] _ in self.isLoadingSubject.onNext(false) })
+            .subscribe(onNext: { [unowned self] materializedEvent in
+                switch materializedEvent {
+                case let .next(airVisualNearestCityResponse, propellerForecastResponse):
                     let cityConditions = CityConditions(city: airVisualNearestCityResponse.getCity(),
                                                         weather: airVisualNearestCityResponse.getWeather(),
                                                         pollution: airVisualNearestCityResponse.getPollution(),
                                                         asthma: propellerForecastResponse.getAsthma())
                     self.cityConditionsSubject.onNext(cityConditions)
-                case let (.error(error), _):
-                    self.errorSubject.onNext(error)
-                case let (_, .error(error)):
+                case let .error(error):
                     self.errorSubject.onNext(error)
                 default: break
                 }

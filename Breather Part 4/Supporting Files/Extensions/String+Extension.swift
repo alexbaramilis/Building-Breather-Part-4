@@ -36,4 +36,9 @@ extension String {
         }
         return indices
     }
+
+    /// A copy of the string with the first character capitalized.
+    var capitalizedFirstLetter: String {
+        return prefix(1).uppercased() + lowercased().dropFirst()
+    }
 }

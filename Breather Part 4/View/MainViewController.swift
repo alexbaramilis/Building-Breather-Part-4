@@ -106,11 +106,11 @@ class MainViewController: UIViewController {
         viewModel.output.asthmaProbability.drive(asthmaProbabilityLabel.rx.text).disposed(by: disposeBag)
         // - Loading
         viewModel.output.isLoading.drive(onNext: { [unowned self] isLoading in
-            self.showLoadingIndicators(force: isLoading)
+            self.showLoadingIndicators(isLoading)
         }).disposed(by: disposeBag)
         // - Error
         viewModel.output.error.drive(onNext: { [unowned self] error in
-            self.showAlert(title: "Error", message: error.localizedDescription)
+            self.showAlert(title: "Error", message: error.localizedDescription.capitalizedFirstLetter)
         }).disposed(by: disposeBag)
     }
 
@@ -123,9 +123,9 @@ class MainViewController: UIViewController {
         refreshSubject.onNext(())
     }
 
-    private func showLoadingIndicators(force: Bool) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = force
-        if !force {
+    private func showLoadingIndicators(_ isLoading: Bool) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
+        if !isLoading {
             refreshControl.endRefreshing()
         }
     }
