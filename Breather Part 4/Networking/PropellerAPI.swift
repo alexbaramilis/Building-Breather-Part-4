@@ -9,6 +9,7 @@
 import Foundation
 import Moya
 
+/// Moya representation of the Air by Propeller API.
 enum PropellerAPI {
     case forecast(lat: Double, lon: Double)
 }

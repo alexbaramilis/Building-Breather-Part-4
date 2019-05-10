@@ -8,21 +8,25 @@
 
 import Foundation
 
+/// The Decodable-conformant representation of AirVisual API's nearest_city endpoint response.
 struct AirVisualNearestCityResponse: Decodable {
     let status: String
     let data: AirVisualNearestCityData
 }
 
+/// The Decodable-conformant representation of the data property of AirVisualNearestCityResponse.
 struct AirVisualNearestCityData: Decodable {
     let city: String
     let currentConditions: AirVisualCurrentConditions
 }
 
+/// The Decodable-conformant representation of the currentConditions property of AirVisualNearestCityData.
 struct AirVisualCurrentConditions: Decodable {
     let weather: AirVisualWeather
     let pollution: AirVisualPollution
 }
 
+/// The Decodable-conformant representation of the weather property of AirVisualCurrentConditions.
 struct AirVisualWeather: Decodable {
     let timestamp: String // timestamp: ex. "2018-12-04T18:00:00.000Z" (ISO 8601) (Z stands for UTC)
     let iconCode: String // weather icon code: ex. "10n"
@@ -33,6 +37,7 @@ struct AirVisualWeather: Decodable {
     let windDirection: Int // wind direction as an angle of 360° (N=0, E=90, S=180, W=270): ex. 145
 }
 
+/// The Decodable-conformant representation of the pollution property of AirVisualCurrentConditions.
 struct AirVisualPollution: Decodable {
     let timestamp: String // timestamp: ex. "2018-12-04T18:00:00.000Z" (ISO 8601) (Z stands for UTC)
     let aqiUS: Int // AQI value based on US EPA standard: ex. 4
@@ -75,10 +80,12 @@ extension AirVisualPollution {
 // MARK: - Helper methods
 
 extension AirVisualNearestCityResponse {
+    /// Extracts the city string from AirVisualNearestCityResponse.
     func getCity() -> String {
         return self.data.city
     }
 
+    /// Extracts a Weather model from AirVisualNearestCityResponse.
     func getWeather() -> Weather {
         return Weather(timestamp: self.data.currentConditions.weather.timestamp,
                        iconCode: self.data.currentConditions.weather.iconCode,
@@ -89,6 +96,7 @@ extension AirVisualNearestCityResponse {
                        windDirection: self.data.currentConditions.weather.windDirection)
     }
 
+    /// Extracts a Pollution model from AirVisualNearestCityResponse.
     func getPollution() -> Pollution {
         return Pollution(timestamp: self.data.currentConditions.pollution.timestamp,
                          aqiUS: self.data.currentConditions.pollution.aqiUS,

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// The ViewModel protocol, with associatedtype Input and Output.
 protocol ViewModel {
     associatedtype Input
     associatedtype Output

@@ -12,7 +12,7 @@
 		612D3A042281A197005DE333 /* PropellerForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D3A032281A197005DE333 /* PropellerForecastResponse.swift */; };
 		61B3983E227D908000E8A98E /* PropellerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3983D227D908000E8A98E /* PropellerAPI.swift */; };
 		61DABCE9227C6DAB00D624DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DABCDA227C6DAA00D624DA /* LaunchScreen.storyboard */; };
-		61DABCEA227C6DAB00D624DA /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DABCDC227C6DAA00D624DA /* Errors.swift */; };
+		61DABCEA227C6DAB00D624DA /* BreatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DABCDC227C6DAA00D624DA /* BreatherError.swift */; };
 		61DABCEB227C6DAB00D624DA /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DABCDD227C6DAA00D624DA /* Asset.swift */; };
 		61DABCEC227C6DAB00D624DA /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DABCDE227C6DAA00D624DA /* Text.swift */; };
 		61DABCED227C6DAB00D624DA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DABCDF227C6DAB00D624DA /* Color.swift */; };
@@ -27,6 +27,8 @@
 		61DABD1A227C6E8E00D624DA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DABD19227C6E8E00D624DA /* MainViewModel.swift */; };
 		61DABD1D227C6E9600D624DA /* CityConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DABD1C227C6E9600D624DA /* CityConditions.swift */; };
 		61DABD20227C6E9E00D624DA /* AirVisualAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DABD1F227C6E9E00D624DA /* AirVisualAPI.swift */; };
+		61FA6F6722857A0700E6C5BF /* AirVisualErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F6622857A0700E6C5BF /* AirVisualErrorResponse.swift */; };
+		61FA6F6922859E5300E6C5BF /* PropellerErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FA6F6822859E5300E6C5BF /* PropellerErrorResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +38,7 @@
 		61B3983D227D908000E8A98E /* PropellerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropellerAPI.swift; sourceTree = "<group>"; };
 		61DABCC4227C6D8800D624DA /* Breather Part 4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Breather Part 4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DABCDA227C6DAA00D624DA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		61DABCDC227C6DAA00D624DA /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		61DABCDC227C6DAA00D624DA /* BreatherError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreatherError.swift; sourceTree = "<group>"; };
 		61DABCDD227C6DAA00D624DA /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		61DABCDE227C6DAA00D624DA /* Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		61DABCDF227C6DAB00D624DA /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -52,6 +54,8 @@
 		61DABD19227C6E8E00D624DA /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		61DABD1C227C6E9600D624DA /* CityConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityConditions.swift; sourceTree = "<group>"; };
 		61DABD1F227C6E9E00D624DA /* AirVisualAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirVisualAPI.swift; sourceTree = "<group>"; };
+		61FA6F6622857A0700E6C5BF /* AirVisualErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirVisualErrorResponse.swift; sourceTree = "<group>"; };
+		61FA6F6822859E5300E6C5BF /* PropellerErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropellerErrorResponse.swift; sourceTree = "<group>"; };
 		84DA6850BB01678DAFC05875 /* Pods-Breather Part 4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breather Part 4.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Breather Part 4/Pods-Breather Part 4.debug.xcconfig"; sourceTree = "<group>"; };
 		AF1C7E1C7D3F62DF7A54C64A /* Pods-Breather Part 4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breather Part 4.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breather Part 4/Pods-Breather Part 4.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,7 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				612D3A0122819ED7005DE333 /* AirVisualNearestCityResponse.swift */,
+				61FA6F6622857A0700E6C5BF /* AirVisualErrorResponse.swift */,
 				612D3A032281A197005DE333 /* PropellerForecastResponse.swift */,
+				61FA6F6822859E5300E6C5BF /* PropellerErrorResponse.swift */,
 			);
 			path = Parsing;
 			sourceTree = "<group>";
@@ -125,7 +131,6 @@
 		61DABCDB227C6DAA00D624DA /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				61DABCDC227C6DAA00D624DA /* Errors.swift */,
 				61DABCDD227C6DAA00D624DA /* Asset.swift */,
 				61DABCDE227C6DAA00D624DA /* Text.swift */,
 				61DABCDF227C6DAB00D624DA /* Color.swift */,
@@ -172,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				61DABD1C227C6E9600D624DA /* CityConditions.swift */,
+				61DABCDC227C6DAA00D624DA /* BreatherError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -333,7 +339,9 @@
 				61DABCF2227C6DAB00D624DA /* AppDelegate.swift in Sources */,
 				61DABCF3227C6DAB00D624DA /* ViewModel.swift in Sources */,
 				61DABCF0227C6DAB00D624DA /* UIViewController+Extension.swift in Sources */,
+				61FA6F6722857A0700E6C5BF /* AirVisualErrorResponse.swift in Sources */,
 				61DABCF1227C6DAB00D624DA /* String+Extension.swift in Sources */,
+				61FA6F6922859E5300E6C5BF /* PropellerErrorResponse.swift in Sources */,
 				61DABCEB227C6DAB00D624DA /* Asset.swift in Sources */,
 				612D3A042281A197005DE333 /* PropellerForecastResponse.swift in Sources */,
 				61B3983E227D908000E8A98E /* PropellerAPI.swift in Sources */,
@@ -341,7 +349,7 @@
 				61DABD1D227C6E9600D624DA /* CityConditions.swift in Sources */,
 				61DABCEF227C6DAB00D624DA /* UILabel+Extension.swift in Sources */,
 				61DABCEC227C6DAB00D624DA /* Text.swift in Sources */,
-				61DABCEA227C6DAB00D624DA /* Errors.swift in Sources */,
+				61DABCEA227C6DAB00D624DA /* BreatherError.swift in Sources */,
 				61DABD16227C6E8500D624DA /* MainViewController.swift in Sources */,
 				61DABD1A227C6E8E00D624DA /* MainViewModel.swift in Sources */,
 				612D3A0222819ED7005DE333 /* AirVisualNearestCityResponse.swift in Sources */,

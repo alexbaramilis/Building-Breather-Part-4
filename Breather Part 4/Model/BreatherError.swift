@@ -1,5 +1,5 @@
 //
-//  Errors.swift
+//  BreatherError.swift
 //  Breather
 //
 //  Created by Alexandros Baramilis on 02/05/2019.

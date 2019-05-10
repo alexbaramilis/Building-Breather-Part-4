@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// The CityConditions model.
 struct CityConditions {
     let city: String
     let weather: Weather
@@ -15,6 +16,7 @@ struct CityConditions {
     let asthma: Asthma
 }
 
+/// The Weather model.
 struct Weather {
     let timestamp: String // timestamp: ex. "2018-12-04T18:00:00.000Z" (ISO 8601) (Z stands for UTC)
     let iconCode: String // weather icon code: ex. "10n"
@@ -25,6 +27,7 @@ struct Weather {
     let windDirection: Int // wind direction as an angle of 360° (N=0, E=90, S=180, W=270): ex. 145
 }
 
+// The Pollution model.
 struct Pollution {
     let timestamp: String // timestamp: ex. "2018-12-04T18:00:00.000Z" (ISO 8601) (Z stands for UTC)
     let aqiUS: Int // AQI value based on US EPA standard: ex. 4
@@ -33,6 +36,7 @@ struct Pollution {
     let mainPollutantChina: String // main pollutant for Chinese AQI: ex. "o3"
 }
 
+// The Asthma model.
 struct Asthma {
     let risk: String // risk of adverse respiratory conditions: "high", "medium" or "low"
     let probability: Double // probability of adverse respiratory conditions: ex. 0.4938...

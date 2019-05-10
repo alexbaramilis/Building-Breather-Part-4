@@ -39,6 +39,6 @@ extension String {
 
     /// A copy of the string with the first character capitalized.
     var capitalizedFirstLetter: String {
-        return prefix(1).uppercased() + lowercased().dropFirst()
+        return prefix(1).uppercased() + dropFirst()
     }
 }

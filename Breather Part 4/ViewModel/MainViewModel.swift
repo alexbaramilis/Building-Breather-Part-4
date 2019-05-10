@@ -145,12 +145,12 @@ class MainViewModel: ViewModel {
 
         let airVisualNearestCity = airVisualAPI.rx
             .request(.nearestCity(lat: lat, lon: lon))
-            .filterSuccessfulStatusCodes()
+            .catchAirVisualError(AirVisualErrorResponse.self)
             .map(AirVisualNearestCityResponse.self)
 
         let propellerForecast = propellerAPI.rx
             .request(.forecast(lat: lat, lon: lon))
-            .filterSuccessfulStatusCodes()
+            .catchPropellerError(PropellerErrorResponse.self)
             .map(PropellerForecastResponse.self)
 
         let zipped = Observable.zip(airVisualNearestCity.asObservable(),

@@ -9,6 +9,7 @@
 import Foundation
 import Moya
 
+/// Moya representation of the AirVisual API.
 enum AirVisualAPI {
     static private let key = "A5xEAXuhEFJZyZA4o"
 
