@@ -6,6 +6,6 @@ and practice some of the latest knowledge I gain about iOS, Swift and programmin
 
 This repo accompanies the Medium articles:
 - [Part 4: Nested JSON Parsing with Decodable, CodingKeys and RxMoya’s filter and map.](https://medium.com/@alexandrosbaramilis/building-breather-part-4-nested-json-parsing-with-decodable-codingkeys-and-rxmoyas-filter-and-515eef3265a5)
-- [Part 4 - Bonus: Coming soon...]()
+- [Part 4 - Bonus: Smooth API error handling with Moya & RxSwift custom operators.](https://medium.com/@alexandrosbaramilis/building-breather-part-4-bonus-smooth-api-error-handling-with-moya-rxswift-custom-operators-992ce377f1d1)
 
 For other parts visit: https://github.com/alexbaramilis/Building-Breather
