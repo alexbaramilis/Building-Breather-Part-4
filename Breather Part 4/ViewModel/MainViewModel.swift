@@ -157,9 +157,9 @@ class MainViewModel: ViewModel {
                                     propellerForecast.asObservable())
 
         viewDidRefreshSubject
-            .do(onNext: { [unowned self] _ in self.isLoadingSubject.onNext(true) })
+            .startLoading(loadingSubject: isLoadingSubject)
             .flatMap { zipped.materialize() }
-            .do(onNext: { [unowned self] _ in self.isLoadingSubject.onNext(false) })
+            .stopLoading(loadingSubject: isLoadingSubject)
             .subscribe(onNext: { [unowned self] materializedEvent in
                 switch materializedEvent {
                 case let .next(airVisualNearestCityResponse, propellerForecastResponse):

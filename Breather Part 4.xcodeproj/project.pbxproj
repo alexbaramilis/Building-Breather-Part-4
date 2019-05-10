@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		46DDA7A478468ECCDD5ABE22 /* Pods_Breather_Part_4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7685A53B6F4755D6D8110C /* Pods_Breather_Part_4.framework */; };
+		612392CB2285F87F002CCBBE /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612392CA2285F87F002CCBBE /* Observable+Extension.swift */; };
 		612D3A0222819ED7005DE333 /* AirVisualNearestCityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D3A0122819ED7005DE333 /* AirVisualNearestCityResponse.swift */; };
 		612D3A042281A197005DE333 /* PropellerForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D3A032281A197005DE333 /* PropellerForecastResponse.swift */; };
 		61B3983E227D908000E8A98E /* PropellerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3983D227D908000E8A98E /* PropellerAPI.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		4B7685A53B6F4755D6D8110C /* Pods_Breather_Part_4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breather_Part_4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		612392CA2285F87F002CCBBE /* Observable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		612D3A0122819ED7005DE333 /* AirVisualNearestCityResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirVisualNearestCityResponse.swift; sourceTree = "<group>"; };
 		612D3A032281A197005DE333 /* PropellerForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropellerForecastResponse.swift; sourceTree = "<group>"; };
 		61B3983D227D908000E8A98E /* PropellerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropellerAPI.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				61DABCE2227C6DAB00D624DA /* UILabel+Extension.swift */,
 				61DABCE3227C6DAB00D624DA /* UIViewController+Extension.swift */,
 				61DABCE4227C6DAB00D624DA /* String+Extension.swift */,
+				612392CA2285F87F002CCBBE /* Observable+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				61DABD16227C6E8500D624DA /* MainViewController.swift in Sources */,
 				61DABD1A227C6E8E00D624DA /* MainViewModel.swift in Sources */,
 				612D3A0222819ED7005DE333 /* AirVisualNearestCityResponse.swift in Sources */,
+				612392CB2285F87F002CCBBE /* Observable+Extension.swift in Sources */,
 				61DABD20227C6E9E00D624DA /* AirVisualAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
