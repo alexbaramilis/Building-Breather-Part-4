@@ -24,9 +24,7 @@ extension PrimitiveSequence where TraitType == SingleTrait, ElementType == Respo
     /// object and throws a PropellerError with the appropriate message from PropellerErrorResponse.
     func catchPropellerError(_ type: PropellerErrorResponse.Type) -> Single<ElementType> {
         return flatMap { response in
-            if (200...299).contains(response.statusCode) {
-                return .just(response)
-            } else {
+            guard (200...299).contains(response.statusCode) else {
                 do {
                     let propellerErrorResponse = try response.map(type.self)
                     throw PropellerError(message: propellerErrorResponse.message ?? propellerErrorResponse.description ?? "")
@@ -34,6 +32,7 @@ extension PrimitiveSequence where TraitType == SingleTrait, ElementType == Respo
                     throw error
                 }
             }
+            return .just(response)
         }
     }
 }

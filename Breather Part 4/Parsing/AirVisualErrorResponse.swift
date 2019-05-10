@@ -29,9 +29,7 @@ extension PrimitiveSequence where TraitType == SingleTrait, ElementType == Respo
     /// object and throws an AirVisualError with the appropriate message from AirVisualErrorResponse.
     func catchAirVisualError(_ type: AirVisualErrorResponse.Type) -> Single<ElementType> {
         return flatMap { response in
-            if (200...299).contains(response.statusCode) {
-                return .just(response)
-            } else {
+            guard (200...299).contains(response.statusCode) else {
                 do {
                     let airVisualErrorResponse = try response.map(type.self)
                     throw AirVisualError(message: airVisualErrorResponse.data.message)
@@ -39,6 +37,7 @@ extension PrimitiveSequence where TraitType == SingleTrait, ElementType == Respo
                     throw error
                 }
             }
+            return .just(response)
         }
     }
 }
